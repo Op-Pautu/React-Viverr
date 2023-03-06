@@ -1,8 +1,9 @@
 import React from "react";
 import "./Navbar.scss";
 const Navbar = () => {
+  const [active, setActive] = React.useState(false);
   return (
-    <div className="navbar">
+    <div className={active ? "navbar active" : "navbar"}>
       <div className="container">
         <div className="logo">
           <span className="text">viverr</span>
@@ -19,6 +20,18 @@ const Navbar = () => {
           <button>Join</button>
         </div>
       </div>
+      {active && (
+        <>
+          <hr />
+          <div className="menu">
+            <span>Test</span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>Test2</span>
+          </div>
+        </>
+      )}
     </div>
   );
 };
