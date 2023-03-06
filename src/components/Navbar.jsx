@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Navbar.scss";
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
   };
@@ -12,6 +13,13 @@ const Navbar = () => {
       window.removeEventListener("scroll", isActive);
     };
   }, []);
+
+  const currentUser = {
+    id: 1,
+    name: "Jane Doe",
+    isSeller: true,
+  };
+
   return (
     <div className={active ? "navbar active" : "navbar"}>
       <div className="container">
@@ -25,9 +33,32 @@ const Navbar = () => {
           <span>English</span>
           <span>Sign In</span>
 
-          <span>Become a seller</span>
+          {!currentUser?.isSeller && <span>Become a seller</span>}
 
-          <button>Join</button>
+          {!currentUser && <button>Join</button>}
+          {currentUser && (
+            <div className="user" onClick={() => setOpen(!open)}>
+              <img
+                src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                alt=""
+              />
+              <span>{currentUser?.username}</span>
+              {open && (
+                <div className="options">
+                  {currentUser?.isSeller && (
+                    <>
+                      <span>Gigs</span>
+                      <span>Add New Gig</span>
+                    </>
+                  )}
+
+                  <span>Orders</span>
+                  <span>Messages</span>
+                  <span>Logout</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
       {active && (
