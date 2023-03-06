@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.scss";
 const Navbar = () => {
   const [active, setActive] = React.useState(false);
+  const isActive = () => {
+    window.scrollY > 0 ? setActive(true) : setActive(false);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", isActive);
+
+    return () => {
+      window.removeEventListener("scroll", isActive);
+    };
+  }, []);
   return (
     <div className={active ? "navbar active" : "navbar"}>
       <div className="container">

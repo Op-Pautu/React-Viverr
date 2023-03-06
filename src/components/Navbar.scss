@@ -5,6 +5,7 @@
     flex-direction: column;
     background-color: #013914;
     color: white;
+    transition: 0.5s all ease;
     &.active{
         background-color: white;
         color: black;
