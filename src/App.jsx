@@ -1,14 +1,35 @@
 import { useState } from "react";
 
 import "./App.css";
-import Navbar from "./components/Navbar";
-
+import Navbar from "./components/navbar/Navbar";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer";
 function App() {
-  const [count, setCount] = useState(0);
+  const Layout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </>
+    );
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/", element: <Home /> },
+      ],
+    },
+  ]);
 
   return (
-    <div className="App">
+    <div>
       <Navbar />
+      <RouterProvider router={router} />
       <p></p>
     </div>
   );
