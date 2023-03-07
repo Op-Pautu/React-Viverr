@@ -6,7 +6,10 @@ import "./Home.scss";
 
 import { cards } from "../../data";
 import { projects } from "../../data";
+
 import CatCard from "../../components/catCard/CatCard";
+import ProjectCard from "../../components/projectCard/ProjectCard";
+
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 
@@ -99,9 +102,9 @@ function Home() {
           </div>
         </div>
       </div>
-      <Slide slidesToShow={5} slidesToScroll={3}>
-        {projects.map((project) => (
-          <CatCard item={project} key={project.id} />
+      <Slide slidesToShow={4} slidesToScroll={3}>
+        {projects.map((card) => (
+          <ProjectCard key={card.id} card={card} />
         ))}
       </Slide>
     </div>
