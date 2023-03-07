@@ -60,7 +60,7 @@
 
             .slider {
                 background-color: #F5F5F5;
-                width: 800px;
+                width: 750px;
 
                 img {
                     max-height: 500px;
@@ -276,6 +276,12 @@
             }
 
             .features {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+
+
                 .item {
                     display: flex;
                     align-items: center;

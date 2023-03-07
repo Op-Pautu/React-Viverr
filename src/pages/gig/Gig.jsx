@@ -7,8 +7,10 @@ function Gig() {
     <div className="gig">
       <div className="container">
         <div className="left">
-          <span className="breadcrumbs">Liverr &gt Graphics & Design &gt</span>
-          <h1>I will create ai generated art for you</h1>
+          <span className="breadcrumbs">
+            Liverr &gt; Graphics & Design &gt;
+          </span>
+          <h1>I Will Create AI Generated Art For You</h1>
           <div className="user">
             <img
               className="pp"
