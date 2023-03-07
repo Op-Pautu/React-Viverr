@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const currentUser = {
     id: 1,
-    name: "Jane Doe",
+    name: "Jane",
     isSeller: true,
   };
 
@@ -34,38 +34,33 @@ const Navbar = () => {
           <span className="dot">.</span>
         </div>
         <div className="links">
-          <span>Viverr Business</span>
+          <span>Liverr Business</span>
           <span>Explore</span>
           <span>English</span>
-          <span>Sign In</span>
-
-          {!currentUser?.isSeller && <span>Become a seller</span>}
-
-          {!currentUser && <button>Join</button>}
-          {currentUser && (
+          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img
                 src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt=""
               />
-              <span>{currentUser?.username}</span>
+              <span>{currentUser?.name}</span>
               {open && (
                 <div className="options">
-                  {currentUser?.isSeller && (
+                  {currentUser.isSeller && (
                     <>
                       <Link className="link" to="/mygigs">
                         Gigs
                       </Link>
-                      <Link className="link" to="add">
+                      <Link className="link" to="/add">
                         Add New Gig
                       </Link>
                     </>
                   )}
-
                   <Link className="link" to="/orders">
                     Orders
                   </Link>
-                  <Link className="link" to="messages">
+                  <Link className="link" to="/messages">
                     Messages
                   </Link>
                   <Link className="link" to="/">
@@ -74,6 +69,13 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              <span>Sign in</span>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
           )}
         </div>
       </div>
